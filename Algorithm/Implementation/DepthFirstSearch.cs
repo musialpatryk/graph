@@ -1,20 +1,14 @@
-﻿using graph.Algorithm.Implementation;
+﻿namespace graph.Algorithm.Implementation;
 
-namespace project_2.Algorithm.Implementation;
-
-public class BubbleSort : IImplementation
+public class DepthFirstSearch : IImplementation
 {
-    public void Execute(int[] array)
+    public void Execute(GraphNode startingNode)
     {
-        for (var i = 0; i < array.Length - 1; i++)
+        startingNode.MarkAsVisited();
+
+        foreach (var childNode in startingNode.GetChildren().Where(childNode => !childNode.IsVisited()))
         {
-            for (var j = 0; j < array.Length - i - 1; j++)
-            {
-                if (array[j] > array[j + 1])
-                {
-                    (array[j], array[j + 1]) = (array[j + 1], array[j]);
-                }
-            }
+            Execute(childNode);
         }
     }
 }

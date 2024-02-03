@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
-using project_2.Algorithm.Implementation;
+using graph.Algorithm.Implementation;
 
-namespace project_2.Algorithm;
+namespace graph.Algorithm;
 
 public class AlgorithmManager
 {
@@ -9,12 +9,11 @@ public class AlgorithmManager
     
     public AlgorithmManager()
     {
-        _algorithms.Add(AlgorithmType.InsertionSort, new InsertionSort());
-        _algorithms.Add(AlgorithmType.BubbleSort, new BubbleSort());
-        _algorithms.Add(AlgorithmType.SelectionSort, new SelectionSort());
+        _algorithms.Add(AlgorithmType.DepthFirstSearch, new DepthFirstSearch());
+        _algorithms.Add(AlgorithmType.BreadthFirstSearch, new BreadthFirstSearch());
     }
     
-    public long GetTimeComplexity(AlgorithmType algorithmType, int[] array)
+    public long GetTimeComplexity(AlgorithmType algorithmType, Graph graph)
     {
         if (!_algorithms.TryGetValue(algorithmType, out var implementation))
         {
@@ -22,7 +21,7 @@ public class AlgorithmManager
         }
         
         var watch = Stopwatch.StartNew();
-        implementation.Execute(array);
+        implementation.Execute(graph.GetFirstGraphNode());
         watch.Stop();
 
         return watch.ElapsedMilliseconds;

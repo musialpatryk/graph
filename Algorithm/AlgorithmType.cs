@@ -1,8 +1,7 @@
-﻿namespace project_2.Algorithm;
+﻿namespace graph.Algorithm;
 
 public enum AlgorithmType
 {
-    SelectionSort,
-    BubbleSort,
-    InsertionSort,
+    DepthFirstSearch,
+    BreadthFirstSearch,
 }

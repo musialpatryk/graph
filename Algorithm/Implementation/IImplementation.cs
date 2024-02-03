@@ -1,6 +1,6 @@
-﻿namespace project_2.Algorithm.Implementation;
+﻿namespace graph.Algorithm.Implementation;
 
 public interface IImplementation
 {
-    public void Execute(int[] array);
+    public void Execute(GraphNode startingNode);
 }
